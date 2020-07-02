@@ -23,8 +23,8 @@ import com.rest.Service.MovieService;
 import com.rest.model.Movie;
 
 @RestController
-@RequestMapping("/api")
 public class MovieController {
+	
 	@Autowired
 	private MovieService movieService;
 
@@ -33,9 +33,11 @@ public class MovieController {
 		try {
 			List<Movie> movies = movieService.getAllMovies();
 
+			
 			if (movies.isEmpty()) {
 				return new ResponseEntity<List<Movie>>(HttpStatus.NO_CONTENT);
 			}
+			 
 
 			return new ResponseEntity<List<Movie>>(movies, HttpStatus.OK);
 		} catch (Exception e) {
@@ -63,7 +65,7 @@ public class MovieController {
 
 			movieService.createMovie(movie);
 
-			return new ResponseEntity<Movie>(movie, HttpStatus.CREATED);
+			return new ResponseEntity<Movie>(HttpStatus.CREATED);
 
 		} catch (Exception e) {
 
@@ -77,9 +79,9 @@ public class MovieController {
 
 		if (movieData.isPresent()) {
 
-			Movie updateMovieData = movieService.updateMovie(movie);
+			Movie updateMovieData = movieService.updateMovie(movie,id);
 
-			return new ResponseEntity<Movie>(updateMovieData, HttpStatus.OK);
+			return new ResponseEntity<Movie>(HttpStatus.OK);
 
 		} else {
 			return new ResponseEntity<Movie>(HttpStatus.NOT_FOUND);
@@ -92,7 +94,7 @@ public class MovieController {
 
 			movieService.deleteMovie(id);
 
-			return new ResponseEntity<HttpStatus>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<HttpStatus>(HttpStatus.EXPECTATION_FAILED);
 		}
