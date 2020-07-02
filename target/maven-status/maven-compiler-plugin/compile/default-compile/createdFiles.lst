@@ -1,0 +1,6 @@
+com\rest\dao\MovieDAO.class
+com\rest\controller\MovieController.class
+com\rest\serviceimpl\MovieServiceImpl.class
+com\rest\model\Movie.class
+com\rest\SpringBootDemoApplication.class
+com\rest\Service\MovieService.class
