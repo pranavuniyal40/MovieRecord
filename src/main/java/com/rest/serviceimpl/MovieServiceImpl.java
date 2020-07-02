@@ -40,8 +40,9 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public Movie updateMovie(Movie movie) {
+	public Movie updateMovie(Movie movie,Integer id) {
 
+		
 		Movie getMovieData = new Movie();
 
 		getMovieData.setTitle(movie.getTitle());
@@ -49,6 +50,8 @@ public class MovieServiceImpl implements MovieService {
 		getMovieData.setCategory(movie.getCategory());
 
 		getMovieData.setStarRating(movie.getStarRating());
+		
+		getMovieData.setId(id);
 
 		return movieDao.save(getMovieData);
 	}
