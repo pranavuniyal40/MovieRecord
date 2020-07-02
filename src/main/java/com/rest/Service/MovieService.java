@@ -13,7 +13,7 @@ public interface MovieService {
 
 	void createMovie(Movie movie);
 
-	Movie updateMovie(Movie movie);
+	Movie updateMovie(Movie movie, Integer id);
 
 	void deleteMovie(Integer id);
 
